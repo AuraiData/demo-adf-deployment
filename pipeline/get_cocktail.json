@@ -3,9 +3,16 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy a random cocktail",
+				"name": "Copy a random cocktail to storage",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get api key from keyvault",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -24,6 +31,15 @@
 							"supportRFC5988": "true"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
@@ -31,10 +47,45 @@
 						"referenceName": "cocktail_db",
 						"type": "DatasetReference",
 						"parameters": {
-							"endpoint": "random.php"
+							"endpoint": "random.php",
+							"api_key": "1"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "auraidata",
+						"type": "DatasetReference",
+						"parameters": {
+							"directory": "random_cocktail",
+							"file": {
+								"value": "@concat('cocktail_', utcNow(), '.json')",
+								"type": "Expression"
+							}
 						}
 					}
 				]
+			},
+			{
+				"name": "Get api key from keyvault",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://kvl-demo-dev.vault.azure.net/secrets/cocktaildb-api-key?api-version=7.4",
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
 			}
 		],
 		"annotations": []

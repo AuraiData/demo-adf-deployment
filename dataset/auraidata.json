@@ -14,7 +14,7 @@
 			}
 		},
 		"annotations": [],
-		"type": "Binary",
+		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
@@ -28,6 +28,7 @@
 				},
 				"container": "raw"
 			}
-		}
+		},
+		"schema": {}
 	}
 }

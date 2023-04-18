@@ -2,10 +2,6 @@
 	"name": "CocktailDB",
 	"properties": {
 		"parameters": {
-			"endpoint": {
-				"type": "string",
-				"defaultValue": "random.php"
-			},
 			"api_key": {
 				"type": "string",
 				"defaultValue": "1"
@@ -14,7 +10,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://www.thecocktaildb.com/api/json/v1/@{linkedService().api_key}/@{linkedService().endpoint}",
+			"url": "https://www.thecocktaildb.com/api/json/v1/@{linkedService().api_key}",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}

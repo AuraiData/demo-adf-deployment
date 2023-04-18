@@ -48,20 +48,20 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"endpoint": "random.php",
-							"api_key": "1"
+							"api_key": {
+								"value": "@activity('Get api key from keyvault').output.value",
+								"type": "Expression"
+							}
 						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "auraidata",
+						"referenceName": "aurai_datastore",
 						"type": "DatasetReference",
 						"parameters": {
 							"directory": "random_cocktail",
-							"file": {
-								"value": "@concat('cocktail_', utcNow(), '.json')",
-								"type": "Expression"
-							}
+							"file": "a.json"
 						}
 					}
 				]

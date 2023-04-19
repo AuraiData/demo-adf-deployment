@@ -61,7 +61,10 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"directory": "random_cocktail",
-							"file": "a.json"
+							"file": {
+								"value": "@concat('cocktail_', utcNow('yyyyMMddTHHmmss'), '.json')",
+								"type": "Expression"
+							}
 						}
 					}
 				]

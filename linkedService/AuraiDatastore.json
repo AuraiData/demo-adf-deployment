@@ -1,0 +1,11 @@
+{
+	"name": "AuraiDatastore",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://auraidatadev.blob.core.windows.net/",
+			"accountKind": "StorageV2"
+		}
+	}
+}

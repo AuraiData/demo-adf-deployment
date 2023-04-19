@@ -1,3 +1,4 @@
 {
-  "kvl-demo-dev": "kvl-demo-prd"
+  "kvl-demo-dev": "kvl-demo-prd",
+  "auraidatadev.blob.core.windows.net", "auraidataprd.blob.core.windows.net'
 }

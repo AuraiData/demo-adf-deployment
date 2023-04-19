@@ -1,0 +1,24 @@
+{
+	"name": "trigger_cocktaildb",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "get_cocktail",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2023-04-19T11:00:00",
+				"timeZone": "W. Europe Standard Time"
+			}
+		}
+	}
+}

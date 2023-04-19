@@ -1,0 +1,19 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ValidateADF
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  validate_adf:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: actions/checkout@v3
+      - name: Validate Data Factory resources
+        uses: Azure/data-factory-validate-action@v1.1.5
+        with:
+          path: ./
+          id: /subscriptions/7d414d1a-dd04-465a-b410-205eeb283bc3/resourceGroups/rsg-demo-dev/providers/Microsoft.DataFactory/factories/adf-aurai-dev

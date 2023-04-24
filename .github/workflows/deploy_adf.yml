@@ -66,7 +66,7 @@ jobs:
         if: ${{ inputs.overwrite_references }}
         run: |
           echo "Start overwriting references in ARMTemplateForFactory.json and ARMTemplateParametersForFactory.json using the mappings in env_mappings.json"
-          jq -c -e 'to_entries[]' env_mappings.json | while read line; do 
+          jq -c 'to_entries[]' env_mappings.json | while read line; do 
               old=$( jq -r '.key' <<< "$line" )
               new=$( jq -r '.value' <<< "$line" )
               echo "Replace $old by $new"

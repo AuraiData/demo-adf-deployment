@@ -14,4 +14,4 @@ jobs:
         uses: Azure/data-factory-validate-action@v1.1.5
         with:
           path: ./
-          id: /subscriptions/7d414d1a-dd04-465a-b410-205eeb283bc3/resourceGroups/rsg-demo-dev/providers/Microsoft.DataFactory/factories/adf-aurai-dev
+          id: /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/rsg-demo-dev/providers/Microsoft.DataFactory/factories/adf-aurai-dev
